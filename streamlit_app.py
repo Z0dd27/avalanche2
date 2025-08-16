@@ -8,7 +8,7 @@ from snowflake.snowpark import Session
 st.title("Avalanche Streamlit App")
 
 # Get data from Snowflake
-connection_parameters = dict(st.secrets["connections.snowflake"])
+connection_parameters = dict(st.secrets["connections"]["snowflake"])
 session = Session.builder.configs(connection_parameters).create()
 #session = get_active_session()
 query = """
@@ -67,5 +67,6 @@ if user_question:
     response = complete(model="claude-3-5-sonnet", prompt=f"Answer this question using the dataset: {user_question} <context>{df_string}</context>", session=session)
 
     st.write(response)
+
 
 
