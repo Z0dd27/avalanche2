@@ -2,7 +2,7 @@ import streamlit as st
 from snowflake.snowpark.context import get_active_session
 import pandas as pd
 import matplotlib.pyplot as plt
-from snowflake.cortex import complete
+from snowflake.ml.cortex import complete
 
 # Initialize the Streamlit app
 st.title("Avalanche Streamlit App")
@@ -63,4 +63,5 @@ user_question = st.text_input("Enter your question here:")
 if user_question:
 
     response = complete(model="claude-3-5-sonnet", prompt=f"Answer this question using the dataset: {user_question} <context>{df_string}</context>", session=session)
+
     st.write(response)
