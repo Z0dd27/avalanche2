@@ -1,14 +1,16 @@
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
 import pandas as pd
 import matplotlib.pyplot as plt
 from snowflake.cortex import complete
+from snowflake.snowpark import Session
 
 # Initialize the Streamlit app
 st.title("Avalanche Streamlit App")
 
 # Get data from Snowflake
-session = get_active_session()
+connection_parameters = dict(st.secrets["connections.snowflake"])
+session = Session.builder.configs(connection_parameters).create()
+#session = get_active_session()
 query = """
 SELECT
     *
@@ -65,4 +67,5 @@ if user_question:
     response = complete(model="claude-3-5-sonnet", prompt=f"Answer this question using the dataset: {user_question} <context>{df_string}</context>", session=session)
 
     st.write(response)
+
 
