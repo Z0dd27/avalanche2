@@ -1,6 +1,6 @@
-streamlit>=1.28
-snowflake-ml-python>=1.10.0
-snowflake-snowpark-python>=0.9.0
-snowflake-connector-python>=2.8.0
+streamlit
+snowflake-ml-python
+snowflake-snowpark-python
+snowflake-connector-python
 pandas
 matplotlib
