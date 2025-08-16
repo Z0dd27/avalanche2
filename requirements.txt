@@ -3,3 +3,4 @@ pandas
 snowflake-snowpark-python
 snowflake-ml-python
 matplotlib
+scikit-learn>=1.6
